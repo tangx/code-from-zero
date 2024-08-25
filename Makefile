@@ -1,0 +1,4 @@
+
+
+watch:
+	tsc --watch

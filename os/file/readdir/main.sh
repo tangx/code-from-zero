@@ -36,3 +36,23 @@ do
     )
 }
 done
+
+
+## use built-in "flag" to check if targe is a directory or a file
+## -f / -d
+## NOTE: if the target is a symbolic lin or doesn't exist, it will return false
+
+function walk() {
+    local path=$1
+    if [ -d $path ]; then
+        for file in $(ls $path)
+        do
+            walk $path/$file
+        done
+    else
+        echo $path
+    fi
+}
+
+echo "walk -d"
+walk .
